@@ -28,14 +28,14 @@ struct GlucoseSettingsView: View {
     var body: some View {
         List {
 
-            Section(header: Text(LocalizedString("Backfill options", comment: "Text describing header for backfill options in glucosesettingsview"))) {
+            Section(header: Text(LocalizedString("回填选项", comment: "Text describing header for backfill options in glucosesettingsview"))) {
                 Toggle("Backfill from history", isOn: $mmBackfillFromHistory)
             }
-            Section(header: Text(LocalizedString("Remote data storage", comment: "Text describing header for remote data storage"))) {
+            Section(header: Text(LocalizedString("远程数据存储", comment: "Text describing header for remote data storage"))) {
                 Toggle("Upload to remote data service", isOn: $mmSyncToNS)
 
             }
-            Section(header: Text(LocalizedString("Debug options", comment: "Text describing header for debug options in glucosesettingsview")), footer: Text(LocalizedString("Adds a lot of data to the Issue Report ", comment: "Text informing user of potentially large reports"))) {
+            Section(header: Text(LocalizedString("调试选项", comment: "Text describing header for debug options in glucosesettingsview")), footer: Text(LocalizedString("在问题报告中添加了很多数据", comment: "Text informing user of potentially large reports"))) {
                 Toggle("Persist sensordata", isOn: $shouldPersistSensorData)
                     .onChange(of: shouldPersistSensorData) {newValue in
                         if !newValue {
@@ -56,7 +56,7 @@ struct GlucoseSettingsView: View {
         .disabled(requiresAuthentication ? !authSuccess : false)
         .listStyle(InsetGroupedListStyle())
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("知道了！")))
         }
         .navigationBarTitle("Glucose Settings")
         

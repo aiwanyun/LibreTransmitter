@@ -39,7 +39,7 @@ struct AuthView: View {
             
             if isAuthenticated {
                 ProgressIndicatorView(state: .completed)
-                Text(LocalizedString("Authenticated", comment: "Text confirming user is authenticated in AuthView"))
+                Text(LocalizedString("身份验证", comment: "Text confirming user is authenticated in AuthView"))
                     
                     .transition(AnyTransition.opacity.combined(with: .move(edge: .bottom)))
                 NavigationLink(destination: ModeSelectionView(cancelNotifier: cancelNotifier, saveNotifier: saveNotifier, pairingService: pairingService, bluetoothSearcher: bluetoothSearcher), isActive: $isNavigationActive) {
@@ -47,7 +47,7 @@ struct AuthView: View {
                         self.notifyReset.notify()
                         self.isNavigationActive = true
                     }) {
-                        Text(LocalizedString("Disconnect & Continue Setup", comment: "Text of Sensor Setup Button in AuthView"))
+                        Text(LocalizedString("断开", comment: "Text of Sensor Setup Button in AuthView"))
                             .actionButtonStyle(.destructive)
                     }
                     
@@ -59,7 +59,7 @@ struct AuthView: View {
                         self.isAuthenticated = success
                     }
                 }) {
-                    Text(LocalizedString("Authenticate", comment: "Text of Authenticate button in AuthView"))
+                    Text(LocalizedString("认证", comment: "Text of Authenticate button in AuthView"))
                         .actionButtonStyle(.primary)
                 }
                 
@@ -125,9 +125,9 @@ struct AuthView: View {
                 
                 HStack {
                     InstructionList(instructions: [
-                        LocalizedString("Activate and finish warming up a new sensor with another app or physical reader.", comment: "Label text for step 1 of AuthView"),
-                        LocalizedString("Press the Authenticate Button.", comment: "Label text for step 2 of AuthView"),
-                        LocalizedString("Proceed to pair new sensor in the next screens. Note that you will loose connection to any existing sensor or transmitter", comment: "Label text for step 3 of AuthView")
+                        LocalizedString("使用另一个应用程序或物理阅读器激活并完成将新传感器预热。", comment: "Label text for step 1 of AuthView"),
+                        LocalizedString("按“身份验证”按钮。", comment: "Label text for step 2 of AuthView"),
+                        LocalizedString("在下一个屏幕中继续配对新传感器。请注意，您将失去与任何现有传感器或发射器的连接", comment: "Label text for step 3 of AuthView")
                     ])
                 }
                 Spacer()

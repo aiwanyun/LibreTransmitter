@@ -49,7 +49,7 @@ struct Divided<S: Shape>: Shape {
 private struct ListFooter: View {
     var devicesCount = 0
     var body: some View {
-        Text(LocalizedString("Found devices:", comment: "Text for discovered number of devices") + " \(devicesCount)")
+        Text(LocalizedString("找到的设备：", comment: "Text for discovered number of devices") + " \(devicesCount)")
     }
 }
 
@@ -141,7 +141,7 @@ private struct DeviceItem: View {
 
         }
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("知道了！")))
         }
         .listRowBackground(getRowBackground(device: device))
         .onTapGesture {
@@ -226,12 +226,12 @@ struct BluetoothSelection: View {
 
     var header: some View {
         Group {
-            Text(LocalizedString("Select the third party transmitter you want to connect to", comment: "Text describing user choice of selecting which transmitter to connect to"))
+            Text(LocalizedString("选择要连接到的第三方发射器", comment: "Text describing user choice of selecting which transmitter to connect to"))
                 .listRowBackground(Defaults.background)
                 .padding(.top)
             HStack {
                 Image(systemName: "link.circle")
-                Text(LocalizedString("Libre Transmitters", comment: "Text header for Libre Transmitters choice"))
+                Text(LocalizedString("Libre发射器", comment: "Text header for Libre Transmitters choice"))
             }
         }
     }

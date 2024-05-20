@@ -23,7 +23,7 @@ struct CriticalAlarmsVolumeView: View {
     
     var body: some View {
         List {
-            Section(header: Text("Critical alarm volume"), footer: Text("Critical alarms will always be sent with volume at minimum 60%")) {
+            Section(header: Text("关键警报音量"), footer: Text("Critical alarms will always be sent with volume at minimum 60%")) {
                 Slider(
                     value: $mmCriticalAlarmsVolume,
                     in: 60...100,

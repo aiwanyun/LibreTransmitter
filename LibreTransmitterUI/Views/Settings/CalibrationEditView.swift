@@ -74,11 +74,11 @@ struct CalibrationEditView: View {
                 }
 
             }, label: {
-                Text(LocalizedString("Save", comment: "Text describing Save button in calibrationeditview"))
+                Text(LocalizedString("保存", comment: "Text describing Save button in calibrationeditview"))
 
             }).buttonStyle(BlueButtonStyle())
             .alert(item: $presentableStatus) { status in
-                Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("Got it!")))
+                Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("知道了！")))
             }
 
         }
@@ -107,7 +107,7 @@ struct CalibrationEditView: View {
 
     var validForSection : some View {
         Section {
-            Text(LocalizedString("Valid for footer: " , comment: "Text describing technical details about the validity of calibrations ") +  "\(newParams.isValidForFooterWithReverseCRCs)")
+            Text(LocalizedString("对页脚有效：" , comment: "Text describing technical details about the validity of calibrations ") +  "\(newParams.isValidForFooterWithReverseCRCs)")
 
         }
     }

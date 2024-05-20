@@ -93,7 +93,7 @@ struct SnoozeView: View {
                 print("will snooze for \(snoozeFor) until \(untilDate.description(with: .current))")
                 snoozeDescription = getSnoozeDescription()
             }, label: {
-                Text(LocalizedString("Click to Snooze Alerts", comment: "Text describing click to snooze label in snoozeview"))
+                Text(LocalizedString("单击以暂停警报", comment: "Text describing click to snooze label in snoozeview"))
                     .padding()
             })
         }
@@ -102,7 +102,7 @@ struct SnoozeView: View {
 
     var snoozePicker: some View {
         VStack {
-            Picker(selection: $selectedInterval, label: Text("Strength")) {
+            Picker(selection: $selectedInterval, label: Text("力量")) {
                 ForEach(0 ..< pickerTimes.count, id: \.self) {
                     Text(formatInterval(self.pickerTimes[$0]))
                 }

@@ -22,24 +22,24 @@ extension PairingError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .noTagInfo:
-            return LocalizedString("Could not get tag info", comment: "error description for PairingError.noTagInfo")
+            return LocalizedString("无法获得标签信息", comment: "error description for PairingError.noTagInfo")
         case .noSensorData:
-            return LocalizedString("Could not get sensor data", comment: "error description for PairingError.noSensorData")
+            return LocalizedString("无法获取传感器数据", comment: "error description for PairingError.noSensorData")
         case .wrongSensorType:
-            return LocalizedString("Wrong sensor type detected", comment: "error description for PairingError.wrongSensorType")
+            return LocalizedString("检测到错误的传感器类型", comment: "error description for PairingError.wrongSensorType")
         case .decryptionError:
-            return LocalizedString("Could not decrypt sensor contents", comment: "error description for PairingError.decryptionError")
+            return LocalizedString("无法解密传感器内容", comment: "error description for PairingError.decryptionError")
         case .noPatchInfo:
-            return LocalizedString("Could not get patch info", comment: "error description for PairingError.noPatchInfo")
+            return LocalizedString("无法获得补丁信息", comment: "error description for PairingError.noPatchInfo")
         case .nfcNotSupported:
-            return LocalizedString("Phone NFC not supported!", comment: "error description for PairingError.nfcNotSupported")
+            return LocalizedString("电话NFC不支持！", comment: "error description for PairingError.nfcNotSupported")
         }
     }
 
     public var recoverySuggestion: String? {
         switch self {
         case .nfcNotSupported:
-            return LocalizedString("Your phone or app is not enabled for NFC communications, which is needed to pair to libre2 sensors", comment: "Recovery suggestion for PairingError.nfcNotSupported")
+            return LocalizedString("NFC通信不启用您的手机或应用", comment: "Recovery suggestion for PairingError.nfcNotSupported")
         default:
             return nil
         }
@@ -67,7 +67,7 @@ public class SensorPairingService: NSObject, NFCTagReaderSessionDelegate, Sensor
         if NFCTagReaderSession.readingAvailable {
             accessQueue.async {
                 self.session = NFCTagReaderSession(pollingOption: .iso15693, delegate: self, queue: self.nfcQueue)
-                self.session?.alertMessage = LocalizedString("Hold the top of your iPhone near the sensor to pair", comment: "")
+                self.session?.alertMessage = LocalizedString("将iPhone的顶部靠近传感器配对", comment: "")
                 self.session?.begin()
             }
         }

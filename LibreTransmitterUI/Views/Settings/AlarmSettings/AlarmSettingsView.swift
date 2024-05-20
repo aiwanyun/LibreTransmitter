@@ -218,7 +218,7 @@ struct AlarmLowRow: View {
 
             systemImage("arrowtriangle.down.circle")
                 .frame(maxWidth: 50, alignment: .leading)
-            Text(LocalizedString("Low", comment: "Text describing Low glucose label in alarmsettingsview"))
+            Text(LocalizedString("低的", comment: "Text describing Low glucose label in alarmsettingsview"))
                 .frame(maxWidth: 100, alignment: .leading)
                 .onTapGesture {
                     isInputFocused.toggle()
@@ -259,7 +259,7 @@ struct AlarmHighRow: View {
 
             systemImage( "arrowtriangle.up.circle")
                 .frame(maxWidth: 50, alignment: .leading)
-            Text(LocalizedString("High", comment: "Text describing High glucose label in alarmsettingsview"))
+            Text(LocalizedString("高的", comment: "Text describing High glucose label in alarmsettingsview"))
                 .frame(maxWidth: 100, alignment: .leading)
                 .onTapGesture {
                     isInputFocused.toggle()
@@ -307,7 +307,7 @@ struct AlarmSettingsView: View {
     var body: some View {
         erasedWithKeyboardDismissal(list)
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("知道了！")))
         }
         .navigationBarTitle("Alarm Settings")
         .onAppear {
@@ -336,7 +336,7 @@ struct AlarmSettingsView: View {
 
         List {
             ForEach(Array(alarmState.schedules.enumerated()), id: \.1) { i, schedule in
-                Section(header: Text(LocalizedString("Schedule ", comment: "Text describing schedule in alarmsettingsview") +  "\(i+1)")) {
+                Section(header: Text(LocalizedString("日程", comment: "Text describing schedule in alarmsettingsview") +  "\(i+1)")) {
                     AlarmDateRow(schedule: schedule, tag: i, subviewSelection: $subviewSelection)
                     AlarmLowRow(schedule: schedule, glucoseUnit: glucoseUnit, glucoseUnitDesc: glucoseUnitDesc, errorReporter: errorReporter)
                     AlarmHighRow(schedule: schedule, glucoseUnit: glucoseUnit, glucoseUnitDesc: glucoseUnitDesc, errorReporter: errorReporter)

@@ -103,10 +103,10 @@ struct Libre2DirectSetup: View {
                 getLeadingImage()
                 HStack {
                     InstructionList(instructions: [
-                        LocalizedString("Your sensor must be activated and fully warmed up.", comment: "Label text for step 1 of libre2 setup"),
-                        LocalizedString("Disconnect and unpair any other app or device communicating with the sensor via bluetooth.", comment: "Label text for step 2 of libre2 setup"),
-                        LocalizedString("Keep phone unlocked and your Loop app in the foreground.", comment: "Label text for step 3 of libre2 setup"),
-                        LocalizedString("The Bluetooth connection will take up to four minutes before it starts working.", comment: "Label text for step 3 of libre2 setup")
+                        LocalizedString("您的传感器必须被激活并充分加热。", comment: "Label text for step 1 of libre2 setup"),
+                        LocalizedString("断开并取消通过蓝牙与传感器通信的任何其他应用程序或设备。", comment: "Label text for step 2 of libre2 setup"),
+                        LocalizedString("将电话解锁，并在前景中闭环应用程序。", comment: "Label text for step 3 of libre2 setup"),
+                        LocalizedString("蓝牙连接在开始工作之前最多需要四分钟。", comment: "Label text for step 3 of libre2 setup")
                     ])
                 }
             }
@@ -119,10 +119,10 @@ struct Libre2DirectSetup: View {
                     if isPairing {
                         HStack(spacing: 10) {
                             ProgressView()
-                            Text(LocalizedString("Pairing...", comment: "Button title for pairing sensor when pairing"))
+                            Text(LocalizedString("配对...", comment: "Button title for pairing sensor when pairing"))
                         }
                     } else {
-                        Text(LocalizedString("Pair Sensor", comment: "Button title for pairing sensor"))
+                        Text(LocalizedString("配对传感器", comment: "Button title for pairing sensor"))
                     }
                 }
                 .actionButtonStyle(.primary)
@@ -134,7 +134,7 @@ struct Libre2DirectSetup: View {
         .navigationBarItems(leading: cancelButton)  // the pair button does the save process for us! //, trailing: saveButton)
         .onReceive(pairingService.publisher, perform: receivePairingInfo)
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("知道了！")))
         
         }
     }

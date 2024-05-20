@@ -19,16 +19,16 @@ struct ModeSelectionView: View {
     var bluetoothSearcher: BluetoothSearcher
 
     var modeSelectSection : some View {
-        Section(header: Text(LocalizedString("Connection options", comment: "Text describing options for connecting to sensor or transmitter"))) {
+        Section(header: Text(LocalizedString("连接选项", comment: "Text describing options for connecting to sensor or transmitter"))) {
 
             NavigationLink(destination: Libre2DirectSetup(cancelNotifier: cancelNotifier, saveNotifier: saveNotifier, pairingService: pairingService)) {
-                SettingsItem(title: LocalizedString("Libre 2 Direct", comment: "Libre 2 connection option"))
+                SettingsItem(title: LocalizedString("libre 2直接", comment: "Libre 2 connection option"))
                     .actionButtonStyle(.primary)
                     .padding([.top, .bottom], 8)
             }
 
             NavigationLink(destination: BluetoothSelection(cancelNotifier: cancelNotifier, saveNotifier: saveNotifier, searcher: bluetoothSearcher)) {
-                SettingsItem(title: LocalizedString("Bluetooth Transmitters", comment: "Bluetooth Transmitter connection option"))
+                SettingsItem(title: LocalizedString("蓝牙发射器", comment: "Bluetooth Transmitter connection option"))
                     .actionButtonStyle(.primary)
                     .padding([.top, .bottom], 8)
             }
@@ -36,7 +36,7 @@ struct ModeSelectionView: View {
     }
 
     var cancelButton: some View {
-        Button(LocalizedString("Cancel", comment: "Cancel button")) {
+        Button(LocalizedString("取消", comment: "Cancel button")) {
             cancelNotifier.notify()
 
         }// .accentColor(.red)
@@ -49,10 +49,10 @@ struct ModeSelectionView: View {
                 
                 HStack {
                     InstructionList(instructions: [
-                        LocalizedString("Sensor should be activated and fully warmed up.", comment: "Label text for step 1 of connection setup"),
-                        LocalizedString("Select the type of setup you want.", comment: "Label text for step 2 of connection setup"),
-                        LocalizedString("Most libre 1 and libre 2 sensors are supported, except North America Libre 2; see readme.md for details.", comment: "Label text for step 3 of connection setup"),
-                        LocalizedString("Fair warning: The sensor will be not be using the manufacturer's algorithm, and some safety mitigations present in the manufacturers algorithm might be missing when you use this.", comment: "Label text for step 4 of connection setup")
+                        LocalizedString("传感器应激活并充分加热。", comment: "Label text for step 1 of connection setup"),
+                        LocalizedString("选择所需的设置类型。", comment: "Label text for step 2 of connection setup"),
+                        LocalizedString("除了北美Libre 2以外，支持大多数Libre 1和Libre 2传感器；有关详细信息，请参见readme.md。", comment: "Label text for step 3 of connection setup"),
+                        LocalizedString("公平的警告：传感器将不使用制造商的算法，并且在使用此过程时可能会缺少制造商算法中的一些安全性缓解。", comment: "Label text for step 4 of connection setup")
                     ])
                 }
   

@@ -117,7 +117,7 @@ struct SettingsView: View {
                 snoozeSection
                 measurementSection
                 if let date = glucoseMeasurement.predictionDate, let prediction = glucoseMeasurement.prediction {
-                    Section(header: Text(LocalizedString("Last Blood Sugar prediction", comment: "Text describing header for Blood Sugar prediction section"))) {
+                    Section(header: Text(LocalizedString("最后的血糖预测", comment: "Text describing header for Blood Sugar prediction section"))) {
                         SettingsItem(title: "CurrentBG", detail: displayGlucosePreference.format(prediction))
                         SettingsItem(title: "Date", detail: longDateFormatter.string(from: date) )
                     }
@@ -150,7 +150,7 @@ struct SettingsView: View {
                 Image(systemName: "pause.circle.fill")
                     .font(.system(size: 22))
                     .foregroundColor(.blue)
-                Text(LocalizedString("Pause Glucose alarms", comment: "Text for pausing glucose alarms")).frame(alignment: .center)
+                Text(LocalizedString("暂停血糖警报", comment: "Text for pausing glucose alarms")).frame(alignment: .center)
                     .foregroundColor(.blue)
                 
             }
@@ -167,7 +167,7 @@ struct SettingsView: View {
             glucoseDateText = longDateFormatter.string(from: date)
         }
 
-        return Section(header: Text(LocalizedString("Last measurement", comment: "Text describing header for last measurement section"))) {
+        return Section(header: Text(LocalizedString("最后测量", comment: "Text describing header for last measurement section"))) {
             SettingsItem(title: "Glucose", detail: glucoseText)
             SettingsItem(title: "Date", detail: glucoseDateText )
             SettingsItem(title: "Sensor Footer checksum", detail: $glucoseMeasurement.checksum )
@@ -176,7 +176,7 @@ struct SettingsView: View {
 
     var deviceInfoSection: some View {
         List {
-            Section(header: Text(LocalizedString("Device Info", comment: "Text describing header for device info section"))) {
+            Section(header: Text(LocalizedString("设备信息", comment: "Text describing header for device info section"))) {
                 if !transmitterInfo.battery.isEmpty {
                     SettingsItem(title: "Battery", detail: $transmitterInfo.battery )
                 }
@@ -236,9 +236,9 @@ struct SettingsView: View {
             }.foregroundColor(.red)
             .alert(isPresented: $showingDestructQuestion) {
                 Alert(
-                    title: Text(LocalizedString("Are you sure you want to remove this cgm from loop?", comment: "Text describing question to remove the cgmmanager from loop")),
-                    message: Text(LocalizedString("There is no undo. Deleting requires authentication!", comment: "Text warning user there is no undo for deleting cgmmanager")),
-                    primaryButton: .destructive(Text(LocalizedString("Delete", comment: "Action text for deleting cgmmanager"))) {
+                    title: Text(LocalizedString("您确定要从闭环中删除此CGM吗？", comment: "Text describing question to remove the cgmmanager from loop")),
+                    message: Text(LocalizedString("没有撤消。删除需要身份验证！", comment: "Text warning user there is no undo for deleting cgmmanager")),
+                    primaryButton: .destructive(Text(LocalizedString("删除", comment: "Action text for deleting cgmmanager"))) {
                         
                         self.authenticate { success in
                             print("got authentication response: \(success)")
@@ -258,7 +258,7 @@ struct SettingsView: View {
     }
 
     var advancedSection: some View {
-        Section(header: Text(LocalizedString("Configuration", comment: "Text describing header for advanced settings section"))) {
+        Section(header: Text(LocalizedString("配置", comment: "Text describing header for advanced settings section"))) {
             // these subviews don't really need to be notified once glucose unit changes
             // so we just pass glucoseunit directly on init
             NavigationLink(destination: AlarmSettingsView(glucoseUnit: self.glucoseUnit)) {
@@ -335,10 +335,10 @@ struct SettingsView: View {
         VStack(spacing: 2) {
             HStack(alignment: .lastTextBaseline, spacing: 3) {
                 if showProgress {
-                    Text(LocalizedString("Sensor expires in ", comment: "Text describing sensor expires in label in settingsview"))
+                    Text(LocalizedString("传感器到期", comment: "Text describing sensor expires in label in settingsview"))
                         .foregroundColor(.secondary)
                 }/* else {
-                    Text(LocalizedString("No Connection: ", comment: "Text describing no connection label in settingsview"))
+                    Text(LocalizedString("无连接：", comment: "Text describing no connection label in settingsview"))
                         .foregroundColor(.secondary)
                     + Text("\(transmitterInfo.connectionState)")
                         .foregroundColor(.secondary)
@@ -348,18 +348,18 @@ struct SettingsView: View {
                 if showProgress {
                     daysRemaining.map { (days) in
                         timeComponent(value: days, units: days == 1 ?
-                                      LocalizedString("day", comment: "Unit for singular day in sensor liferemaining") :
-                                        LocalizedString("days", comment: "Unit for plural days in sensor life remaining"))
+                                      LocalizedString("天", comment: "Unit for singular day in sensor liferemaining") :
+                                        LocalizedString("天", comment: "Unit for plural days in sensor life remaining"))
                     }
                     hoursRemaining.map { (hours) in
                         timeComponent(value: hours, units: hours == 1 ?
-                                      LocalizedString("hour", comment: "Unit for singular hour in sensor life remaining") :
-                                        LocalizedString("hours", comment: "Unit for plural hours in sensor life remaining"))
+                                      LocalizedString("小时", comment: "Unit for singular hour in sensor life remaining") :
+                                        LocalizedString("小时", comment: "Unit for plural hours in sensor life remaining"))
                     }
                     minutesRemaining.map { (minutes) in
                         timeComponent(value: minutes, units: minutes == 1 ?
-                                      LocalizedString("minute", comment: "Unit for singular minute in sensor life remaining") :
-                                        LocalizedString("minutes", comment: "Unit for plural minutes in sensor life remaining"))
+                                      LocalizedString("分钟", comment: "Unit for singular minute in sensor life remaining") :
+                                        LocalizedString("分钟", comment: "Unit for plural minutes in sensor life remaining"))
                     }
                 }
             }
@@ -391,7 +391,7 @@ struct SettingsView: View {
     }
     var sensorStatus: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(LocalizedString("Sensor State", comment: "Text describing Sensor state label in settingsview"))
+            Text(LocalizedString("传感器状态", comment: "Text describing Sensor state label in settingsview"))
                 .fontWeight(.heavy)
                 .fixedSize()
             Text("\(sensorStatusText)")
@@ -408,7 +408,7 @@ struct SettingsView: View {
     
     var sensorSerial : some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(LocalizedString("Sensor Serial", comment: "Text describing Sensor serial label in settingsview"))
+            Text(LocalizedString("传感器串行", comment: "Text describing Sensor serial label in settingsview"))
                 // .font(.system(size: 1))
                 .fontWeight(.heavy)
                 .fixedSize()
@@ -434,7 +434,7 @@ struct SettingsView: View {
                 }
                 
                 /*Divider()
-                Text("some faultAction")
+                Text("一些故障")
                     .font(Font.footnote.weight(.semibold))
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -443,14 +443,14 @@ struct SettingsView: View {
             }
             if sensorIsExpired {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Sensor is expired")
+                    Text("传感器已过期")
                         .font(Font.subheadline.weight(.bold))
-                    Text("Replace sensor immediately to continue receving glucose values")
+                    Text("立即更换传感器以继续接收血糖值")
                         .font(Font.footnote.weight(.semibold))
                 }.padding(.vertical, 8)
             } else if !["Notifying", "Connected"].contains(transmitterInfo.connectionState) || !showProgress {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(LocalizedString("No Connection: ", comment: "Text describing no connection label in settingsview"))
+                    Text(LocalizedString("无连接：", comment: "Text describing no connection label in settingsview"))
                         .font(Font.subheadline.weight(.bold))
                      Text("\(transmitterInfo.connectionState)")
                         .font(Font.footnote.weight(.semibold))

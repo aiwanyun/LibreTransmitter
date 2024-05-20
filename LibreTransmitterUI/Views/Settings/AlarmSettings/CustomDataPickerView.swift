@@ -118,7 +118,7 @@ struct CustomDataPickerView: View {
         .clipped()
         .labelsHidden()
 
-        Text(LocalizedString("To ", comment: "Very short text describing separation between start and end datetimes"))
+        Text(LocalizedString("到", comment: "Very short text describing separation between start and end datetimes"))
 
         Picker("", selection: $externalState.end,
           content: {
@@ -196,7 +196,7 @@ struct CustomDataPickerView: View {
 
         }
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message), dismissButton: .default(Text("知道了！")))
         }
 
     }
